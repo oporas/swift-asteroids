@@ -12,24 +12,66 @@ class AsteroidViewController: UIViewController {
     
     
     private var asteroidField: AsteroidFieldView!
+    private var ship: SpaceshipView!
+    
+    private var asteroidBehavior = AsteroidBehavior()
+    
+    private lazy var animator: UIDynamicAnimator = UIDynamicAnimator(referenceView: self.asteroidField)
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         initializeIfNeeded()
+        animator.addBehavior(asteroidBehavior)
+        asteroidBehavior.pushAllAsteroids()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        animator.removeBehavior(asteroidBehavior)
     }
     
     private func initializeIfNeeded() {
         if asteroidField == nil {
             asteroidField = AsteroidFieldView(frame: CGRect(center: view.bounds.mid, size: view.bounds.size))
             view.addSubview(asteroidField)
+            let shipSize = view.bounds.size.minEdge * Constants.shipSizetoMinBoundsEdgeRatio
+            ship = SpaceshipView(frame: CGRect(squareCenteredAt: asteroidField.center, size: shipSize))
+            view.addSubview(ship)
+            repositionShip()
             asteroidField.addAsteroids(count: Constants.initialAsteroidCount)
-            
+            asteroidField.asteroidBehavior = asteroidBehavior
         }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         asteroidField?.center = view.bounds.mid
+        repositionShip()
+    }
+    
+    private func repositionShip() {
+        if asteroidField != nil {
+            ship.center = asteroidField.center
+            //Activate shield when ship hits an asteroid
+            asteroidBehavior.setBoundary(ship.shieldBoundary(in: asteroidField), named: Constants.shipBoundaryName) {
+                [weak self] in
+                if let ship = self?.ship {
+                    if !ship.shieldIsActive {
+                    ship.shieldIsActive = true
+                    ship.shieldLevel -= Constants.Shield.activationCost // Remove shields hitpoints
+                    // Deactivate shield after duration (From Constants.Shield)
+                    Timer.scheduledTimer(withTimeInterval: Constants.Shield.duration, repeats: false) { timer in
+                        ship.shieldIsActive = false
+                        // Autoress ship for testing
+                        if ship.shieldLevel == 0 {
+                            ship.shieldLevel = 100
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     private struct Constants {

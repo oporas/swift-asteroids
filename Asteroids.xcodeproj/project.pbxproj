@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		AA4420AC1EC1D35B009BDFFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420AB1EC1D35B009BDFFF /* AppDelegate.swift */; };
-		AA4420AE1EC1D35B009BDFFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420AD1EC1D35B009BDFFF /* ViewController.swift */; };
+		AA4420AE1EC1D35B009BDFFF /* AsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420AD1EC1D35B009BDFFF /* AsteroidViewController.swift */; };
 		AA4420B11EC1D35B009BDFFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4420AF1EC1D35B009BDFFF /* Main.storyboard */; };
 		AA4420B31EC1D35B009BDFFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4420B21EC1D35B009BDFFF /* Assets.xcassets */; };
 		AA4420B61EC1D35B009BDFFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4420B41EC1D35B009BDFFF /* LaunchScreen.storyboard */; };
+		AA4420BF1EC1D7DA009BDFFF /* AsteroidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420BE1EC1D7DA009BDFFF /* AsteroidView.swift */; };
+		AA4420C11EC1DCC2009BDFFF /* CoreGraphicsExtensios.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420C01EC1DCC2009BDFFF /* CoreGraphicsExtensios.swift */; };
+		AA4420C31EC1E0AF009BDFFF /* SpaceshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420C21EC1E0AF009BDFFF /* SpaceshipView.swift */; };
+		AA4420C51EC1E2AE009BDFFF /* AsteroidFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4420C41EC1E2AE009BDFFF /* AsteroidFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA4420A81EC1D35B009BDFFF /* Asteroids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Asteroids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4420AB1EC1D35B009BDFFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA4420AD1EC1D35B009BDFFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA4420AD1EC1D35B009BDFFF /* AsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidViewController.swift; sourceTree = "<group>"; };
 		AA4420B01EC1D35B009BDFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA4420B21EC1D35B009BDFFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA4420B51EC1D35B009BDFFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA4420B71EC1D35B009BDFFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA4420BE1EC1D7DA009BDFFF /* AsteroidView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidView.swift; sourceTree = "<group>"; };
+		AA4420C01EC1DCC2009BDFFF /* CoreGraphicsExtensios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreGraphicsExtensios.swift; sourceTree = "<group>"; };
+		AA4420C21EC1E0AF009BDFFF /* SpaceshipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceshipView.swift; sourceTree = "<group>"; };
+		AA4420C41EC1E2AE009BDFFF /* AsteroidFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,26 @@
 		AA4420AA1EC1D35B009BDFFF /* Asteroids */ = {
 			isa = PBXGroup;
 			children = (
-				AA4420AB1EC1D35B009BDFFF /* AppDelegate.swift */,
-				AA4420AD1EC1D35B009BDFFF /* ViewController.swift */,
 				AA4420AF1EC1D35B009BDFFF /* Main.storyboard */,
+				AA4420AD1EC1D35B009BDFFF /* AsteroidViewController.swift */,
 				AA4420B21EC1D35B009BDFFF /* Assets.xcassets */,
+				AA4420BE1EC1D7DA009BDFFF /* AsteroidView.swift */,
+				AA4420C01EC1DCC2009BDFFF /* CoreGraphicsExtensios.swift */,
+				AA4420C21EC1E0AF009BDFFF /* SpaceshipView.swift */,
+				AA4420C41EC1E2AE009BDFFF /* AsteroidFieldView.swift */,
+				AA4420BD1EC1D390009BDFFF /* supporting files */,
+			);
+			path = Asteroids;
+			sourceTree = "<group>";
+		};
+		AA4420BD1EC1D390009BDFFF /* supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				AA4420AB1EC1D35B009BDFFF /* AppDelegate.swift */,
 				AA4420B41EC1D35B009BDFFF /* LaunchScreen.storyboard */,
 				AA4420B71EC1D35B009BDFFF /* Info.plist */,
 			);
-			path = Asteroids;
+			name = "supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4420AE1EC1D35B009BDFFF /* ViewController.swift in Sources */,
+				AA4420AE1EC1D35B009BDFFF /* AsteroidViewController.swift in Sources */,
 				AA4420AC1EC1D35B009BDFFF /* AppDelegate.swift in Sources */,
+				AA4420C51EC1E2AE009BDFFF /* AsteroidFieldView.swift in Sources */,
+				AA4420C11EC1DCC2009BDFFF /* CoreGraphicsExtensios.swift in Sources */,
+				AA4420BF1EC1D7DA009BDFFF /* AsteroidView.swift in Sources */,
+				AA4420C31EC1E0AF009BDFFF /* SpaceshipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

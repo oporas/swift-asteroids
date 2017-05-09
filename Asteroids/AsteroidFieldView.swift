@@ -24,8 +24,8 @@ class AsteroidFieldView: UIView {
     }
 
     var scale: CGFloat = 0.002
-    var minAsteroidSize: CGFloat = 0.25
-    var maxAsteroidSize: CGFloat = 2.00
+    var minAsteroidSize: CGFloat = 0.75
+    var maxAsteroidSize: CGFloat = 2.75
     
     func addAsteroids(count: Int, exclusionZone: CGRect = CGRect.zero) {
         assert(!bounds.isEmpty, "can't add asteroids to an empty field")

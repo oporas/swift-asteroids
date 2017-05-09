@@ -11,6 +11,29 @@ import UIKit
 class AsteroidViewController: UIViewController {
     
     
+    @IBAction func longPressure(_ sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began,.changed:
+            ship.direction = (sender.location(in: view) - ship.center).angle
+            burn()
+        case .ended:
+            endBurn()
+        default:
+            break
+        }
+    }
+    
+    private func burn() {
+        ship.enginesAreFiring = true
+        asteroidBehavior.acceleration.angle = ship.direction - CGFloat.pi
+        asteroidBehavior.acceleration.magnitude = Constants.burnAcceleration
+    }
+    
+    private func endBurn() {
+        ship.enginesAreFiring = false
+        asteroidBehavior.acceleration.magnitude = 0
+    }
+    
     private var asteroidField: AsteroidFieldView!
     private var ship: SpaceshipView!
     
@@ -33,13 +56,13 @@ class AsteroidViewController: UIViewController {
     
     private func initializeIfNeeded() {
         if asteroidField == nil {
-            asteroidField = AsteroidFieldView(frame: CGRect(center: view.bounds.mid, size: view.bounds.size))
+            asteroidField = AsteroidFieldView(frame: CGRect(center: view.bounds.mid, size: view.bounds.size * Constants.asteroidFieldMagnitude))
             view.addSubview(asteroidField)
             let shipSize = view.bounds.size.minEdge * Constants.shipSizetoMinBoundsEdgeRatio
             ship = SpaceshipView(frame: CGRect(squareCenteredAt: asteroidField.center, size: shipSize))
             view.addSubview(ship)
             repositionShip()
-            asteroidField.addAsteroids(count: Constants.initialAsteroidCount)
+            asteroidField.addAsteroids(count: Constants.initialAsteroidCount, exclusionZone: ship.convert(ship.bounds, to: asteroidField))
             asteroidField.asteroidBehavior = asteroidBehavior
         }
     }
@@ -80,7 +103,7 @@ class AsteroidViewController: UIViewController {
         static let shipSizetoMinBoundsEdgeRatio: CGFloat = 1/5
         static let asteroidFieldMagnitude: CGFloat = 10
         static let normalizedDistanceOfShipFromEdge: CGFloat = 0.2
-        static let burnAcceleration: CGFloat = 0.07
+        static let burnAcceleration: CGFloat = 0.15
         
         struct Shield {
             static let duration: TimeInterval = 1.0
